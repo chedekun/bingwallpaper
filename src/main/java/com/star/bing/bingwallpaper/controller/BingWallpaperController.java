@@ -29,8 +29,8 @@ public class BingWallpaperController {
     @GetMapping("/")
     public String getBingWallPaperList(BingWallpaper bingWallpaper){
         Page<BingWallpaper> page = new Page<BingWallpaper>();
-        page.setCurrent(bingWallpaper.getPage());
-        page.setSize(bingWallpaper.getSize());
+        page.setCurrent(bingWallpaper.getPage() == 0 ? 1 : bingWallpaper.getPage());
+        page.setSize(bingWallpaper.getSize() == 0 ? 1 : bingWallpaper.getSize());
 
         IPage<BingWallpaper> iPage = bingWallpaperService.getBingWallPaperList(page,bingWallpaper);
         List<BingWallpaper> list = iPage.getRecords();
