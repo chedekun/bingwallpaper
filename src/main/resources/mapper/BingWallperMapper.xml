@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.star.bing.bingwallpaper.mapper.BingWallpaperMapper">
+    <!--通过查询映射结果-->
+    <resultMap id="BaseResultMap" type="com.star.bing.bingwallpaper.entity.BingWallpaper">
+        <id column="kid" property="kid"></id>
+        <result column="image_url" property="imageUrl"></result>
+        <result column="image_remark" property="imageRemark"></result>
+        <result column="image_date" property="imageDate"></result>
+        <result column="image_like" property="imageLike"></result>
+        <result column="image_down" property="imageDown"></result>
+    </resultMap>
+    
+    <!--通用查询结果列-->
+    <sql id="Base_Column_List">
+        kid, image_url, image_remark, image_date, image_like, image_down
+    </sql>
+
+    <select id="getBingWallPaperList" resultType="com.star.bing.bingwallpaper.entity.BingWallpaper">
+        select 
+          image_url,
+          image_remark,
+          image_date
+        from bing_wallpaper
+    </select>
+</mapper>

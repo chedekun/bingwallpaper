@@ -1,0 +1,44 @@
+server:
+  port: 7777
+
+  #spring
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/bing_wallpaper?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: 123456
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+
+  #fpt??
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
+
+#mybatis-plus
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*Mapper.xml
+  type-aliases-package: com.star.bing.bingwallpaper.entity
+  global-config:
+    mapper-registry-cache: true
+    db-config:
+      #????  0:"???ID??", 1:"????ID",2:"????ID (??????ID)", 3:"????ID UUID";
+      id-type: UUID
+      #???? 0:"????",1:"? NULL ??"),2:"????"
+      field-strategy: NOT_NULL
+      logic-delete-value: 0
+      logic-not-delete-value: 1
+    sql-parser-cache: true
+  configuration:
+    #???????(column?????&&??java???????)???????as???????SQL???as? select user_id as userId?
+    map-underscore-to-camel-case: true
+    cache-enabled: true
+#log
+logging:
+  level:
+    root: INFO
+    com.star.bing.bingwallpaper.mapper: DEBUG
